@@ -1,5 +1,8 @@
-Pipeline {
+pipeline {
         agent any
+        environment {
+                PATH = "/usr/bin/mvn:$PATH"
+        }
         stages{
         stage("Checkout GIT"){
                 steps{
