@@ -1,9 +1,17 @@
-node {
-        stage('Checkout GIT'){
-                git 'https://github.com/Styvekamga/SpringAop.git'                
+Pipeline {
+        agent any
+        stages{
+        stage("Checkout GIT"){
+                steps{
+                        git url: 'https://github.com/Styvekamga/SpringAop.git' 
+                }
+                               
             }        
-        //stage('Compile-Package') {                
-          //      def mvnHome = tool name: 'M2_HOME', type: 'maven'
-            //    sh "${mvnHome}/bin/mvn package"
-            //}
-//}
+        stage("Build-Code"){
+                steps{
+                        sh "mvn clean install"
+                }
+                               
+            }        
+        }
+}
